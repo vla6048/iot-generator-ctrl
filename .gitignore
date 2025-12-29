@@ -1,0 +1,4 @@
+mosquitto/data/*
+mosquitto/log/*
+nodered/data/*
+!**/.*keep

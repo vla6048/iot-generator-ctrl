@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_app
+    restart: always
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - my_safe_192_network
+
+  node-red:
+    image: nodered/node-red:latest
+    container_name: generator_ui
+    restart: always
+    depends_on:
+      - mosquitto
+    environment:
+      - TZ=Europe/Kyiv
+    volumes:
+      - ./nodered/data:/data
+    networks:
+      - my_safe_192_network
+
+networks:
+  my_safe_192_network:
+    external: true
