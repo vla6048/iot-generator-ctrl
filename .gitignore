@@ -1,4 +1,7 @@
 mosquitto/data/*
 mosquitto/log/*
 nodered/data/*
+!nodered/data/settings.js
 !**/.*keep
+.env
+

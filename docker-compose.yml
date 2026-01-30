@@ -13,7 +13,7 @@ services:
       - my_safe_192_network
 
   node-red:
-    image: nodered/node-red:latest
+    image: nodered/node-red:3.1.10 
     container_name: generator_ui
     restart: always
     depends_on:
